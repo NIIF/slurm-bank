@@ -47,9 +47,44 @@ SUG2012-paper
 <div id="pagebody">
 
 <div id="content">
-<h1>Slurm Bank</h1>
+<h1><a name="index1h1"></a>Slurm Bank</h1>
 
-<h2>Abstract</h2>
+<div class="toc">
+<ol>
+	<li class="L1"><a href="#index1h1">Slurm Bank</a>
+	<ol>
+		<li class="L2"><a href="#index1h2">Abstract</a>
+		</li>
+		<li class="L2"><a href="#index2h2">Background</a>
+		<ol>
+			<li class="L3"><a href="#index1h3">FIXME Points are to be moved to slides</a>
+			</li>
+		</ol>
+		</li>
+		<li class="L2"><a href="#index3h2">Design</a>
+		<ol>
+			<li class="L3"><a href="#index2h3">Features</a>
+			</li>
+		</ol>
+		</li>
+		<li class="L2"><a href="#index4h2">Admin</a>
+		</li>
+		<li class="L2"><a href="#index5h2">User</a>
+		</li>
+		<li class="L2"><a href="#index6h2">Deployed on</a>
+		</li>
+		<li class="L2"><a href="#index7h2">Limitations</a>
+		</li>
+		<li class="L2"><a href="#index8h2">Our Experiences</a>
+		</li>
+		<li class="L2"><a href="#index9h2">Future Work</a>
+		</li>
+	</ol>
+	</li>
+</ol>
+</div>
+
+<h2><a name="index1h2"></a>Abstract</h2>
 
 <p>SLURM Bank is a collection of wrapper scripts to give SLURM GOLD-like
 capabilities for managing resources. With the SLURM Bank scripts we
@@ -57,6 +92,46 @@ are able to provide a simple banking system where we can deposit hours
 to an account. Users are associated with these accounts which they use
 to run jobs. If users do not have an account or if they do not have
 hours in their account then they cannot run jobs.</p>
+
+<h2><a name="index2h2"></a>Background</h2>
+
+<h3><a name="index1h3"></a>FIXME Points are to be moved to slides</h3>
+
+<ul>
+<li>Brief history of TCHPC and systems/resource managers
+<ul>
+<li>Funding agencies wanted accountability for CPU time; reporting of this</li>
+</ul></li>
+<li>Were running GOLD+Maui+Torque</li>
+<li>Tried GOLD+Maui+Slurm
+<ul>
+<li>interface very unreliable, complex</li>
+</ul></li>
+<li>Wanted to just use Slurm (simpler, less complex, more reliable)</li>
+<li>Refs to slurm-dev mailing list threads</li>
+</ul>
+
+<hr />
+
+<p>Trinity Centre for High Performance Computing (TCHPC) is based in
+Trinity College Dublin. TCHPC provides a number of storage and compute
+services. The <em>slurm-bank</em> package relates to the compute services
+provided. There are a number of computing systems available to
+academics in TCD, these range from small to medium sized clusters and
+a rack of Bluegene/P.</p>
+
+<p>In the past Torque, Maui and GOLD was deployed to provide the
+accounting and banking features that the funding agencies required for
+justifying the funding streams and usage of the funded systems. The
+deployed system was in general not as reliable as we desired, this
+prompted the devops team to look for more suitable alternatives. Prior
+to the development of slurm-bank the solution was to deploy Slurm,
+Maui and GOLD. While this solution worked it was not as reliable or as
+transparent as desired.</p>
+
+<p>A number of emails were exchanged during FIXME: look up refs. and
+internally at TCHPC the devops decided to implement some of the ideas
+that was expressed by the Slurm developers.</p>
 
 <p>At TCHPC, we were motivated to replace the resource management and
 allocation systems which comprised of three pieces of software (slurm,
@@ -85,23 +160,7 @@ from GOLD</li>
 current proposed implementation. Despite this, SLURM Bank has been in
 production use at TCHPC for a year with some success.</p>
 
-<h2>Background</h2>
-
-<ul>
-<li>Brief history of TCHPC and systems/resource managers
-<ul>
-<li>Funding agencies wanted accountability for CPU time; reporting of this</li>
-</ul></li>
-<li>Were running GOLD+Maui+Torque</li>
-<li>Tried GOLD+Maui+Slurm
-<ul>
-<li>interface very unreliable, complex</li>
-</ul></li>
-<li>Wanted to just use Slurm (simpler, less complex, more reliable)</li>
-<li>Refs to slurm-dev mailing list threads</li>
-</ul>
-
-<h2>Design</h2>
+<h2><a name="index3h2"></a>Design</h2>
 
 <ul>
 <li>Use existing GRPCPUMins feature in Slurm</li>
@@ -119,7 +178,7 @@ production use at TCHPC for a year with some success.</p>
 <li>Flat hierarchy of Associations</li>
 </ul>
 
-<h3>Features</h3>
+<h3><a name="index2h3"></a>Features</h3>
 
 <ul>
 <li>Create Slurm Associations (called ``projects'')</li>
@@ -136,26 +195,26 @@ production use at TCHPC for a year with some success.</p>
 </ul></li>
 </ul>
 
-<h2>Admin</h2>
+<h2><a name="index4h2"></a>Admin</h2>
 
 <ul>
 <li>Walkthrough</li>
 </ul>
 
-<h2>User</h2>
+<h2><a name="index5h2"></a>User</h2>
 
 <ul>
 <li>Walkthrough</li>
 </ul>
 
-<h2>Deployed on</h2>
+<h2><a name="index6h2"></a>Deployed on</h2>
 
 <ul>
 <li>SLURM 2.2.x</li>
 <li>SL5x (and system version of perl/bash)</li>
 </ul>
 
-<h2>Limitations</h2>
+<h2><a name="index7h2"></a>Limitations</h2>
 
 <ul>
 <li>Slurm fairshare essentially fails if the period is too long
@@ -179,7 +238,7 @@ would become a big issue.</li>
 <li>Many small jobs: has the potential to query sacctmgr many times and create a bottleneck</li>
 </ul>
 
-<h2>Our Experiences</h2>
+<h2><a name="index8h2"></a>Our Experiences</h2>
 
 <ul>
 <li>sbank balance written to the slurm-NNN.out file by the Epilog
@@ -201,7 +260,7 @@ allocation has a fairshare tending towards zero.</li>
 </ul></li>
 </ul>
 
-<h2>Future Work</h2>
+<h2><a name="index9h2"></a>Future Work</h2>
 
 <ul>
 <li>Re-implement in C, and integrate with upstream source</li>
@@ -252,7 +311,7 @@ gain some extra, ``unauthorised'' hours, but not for long.</li>
 
 
 <div class="pagedate">
-Last edited <span class="date">Mon  2 Jul 15:11:14 2012</span>
+Last edited <span class="date">Mon  2 Jul 15:45:01 2012</span>
 <!-- Created <span class="date">Mon  2 Jul 15:11:14 2012</span> -->
 </div>
 
